@@ -6,11 +6,11 @@ on:
       - main
 
 jobs:
-  update-s3-bucket:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: "S3 Bucket sync"
-        uses: jakejarvis/s3-sync-action@master
+      - uses: actions/checkout@master
+      - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
